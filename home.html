@@ -35,7 +35,7 @@
             <div class="flex gap-2">
                  <input type="text" placeholder="Search" class="input input-bordered w-24 md:w-auto" />
                  <div class="dropdown dropdown-end">
-                    <button class="btn btn-primary">New Issue</button>
+                    <button class="btn btn-primary"><i class="fa-solid fa-plus"></i> New Issue</button>
                  </div>
             </div>
         </div>
@@ -43,10 +43,24 @@
 
 <main class="min-h-screen max-w-7xl  mx-auto ">
 
-    <div class=" bg-base-100 p-4 mt-4 rounded-box shadow-sm">
-        <button class="btn  btn-primary">All</button>
-        <button class="btn  btn-primary">Open</button>
-        <button class="btn  btn-primary">Closed</button>
+    <div id="btnContent" class=" bg-base-100 p-4 mt-4 rounded-box shadow-sm">
+
+    <button class="toggle-btn bg-blue-700 text-white px-4 py-2 rounded" data-type="all">
+      All
+    </button>
+
+    <button class="toggle-btn bg-white border px-4 py-2 rounded" data-type="open">
+      Open
+    </button>
+
+    <button class="toggle-btn bg-white border px-4 py-2 rounded" data-type="closed">
+      Closed
+    </button>
+
+      
+        <!-- <button id="allBtn" class="btn  btn-primary">All</button>
+        <button id="openBtn" class="btn  btn-outline">Open</button>
+        <button id="closedBtn" class="btn  btn-outline">Closed</button> -->
     </div>
 
     <div class="bg-base-100 p-4 mt-4 rounded-box shadow-sm justify-between flex ">
@@ -63,173 +77,19 @@
         </div>
     </div>
 
-    <div class=" card-container bg-base-100 p-4 mt-4 rounded-box shadow-sm grid gap-4 md:grid-cols-4">
-            <div class="card bg-base-100  shadow-sm  py-2 border-t-4 border-green-500 ">
-              <figure class="justify-between px-4 py-2">
-                <div class=""><img src="assets/Open-Status.png" alt=""></div>
-                <div class="bg-red-100 text-red-400 px-4  rounded-2xl">High</div>
-              </figure>
-              <div class="card-body py-2 px-4">
-               <div class="">
-                <h2 class="text-[18px] font-semibold">Fix navigation menu on mobile devices</h2>
-                <P class="line-clamp-2 opacity-60">The navigation menu doesn't collapse properly on mobile devices...</P>
-              </div>
-                <div class="card-actions flex">
-                  <div class="badge badge-outline bg-red-100 text-red-400 px-4  rounded-2xl"><i class="fa-solid fa-bug"></i>Bug</div>
-                  <div class="badge badge-outline bg-yellow-100 text-yellow-400 px-4  rounded-2xl"><i class="fa-solid fa-life-ring"></i>Help Wanted</div>
-                </div>
-              </div>
-              <hr class="border-t border-base-300 mt-2">
-              <div class="card-footer flex justify-between items-center px-4 py-2">
-                <div class="flex flex-col gap-2 opacity-60">
-                  <p class="text-sm">#1 by john_doe</p>
-                  <p><time datetime="2023-10-01T12:00:00Z">1/15/2024</time></p>
-                </div>
-              </div>
-            </div>
-            <div class="card bg-base-100  shadow-sm  py-2 border-t-4 border-green-500 ">
-              <figure class="justify-between px-4 py-2">
-                <div class=""><img src="assets/Open-Status.png" alt=""></div>
-                <div class="bg-yellow-100 text-yellow-400 px-4  rounded-2xl">Medium</div>
-              </figure>
-              <div class="card-body py-2 px-4">
-               <div class="">
-                <h2 class="text-[18px] font-semibold">Fix navigation menu on mobile devices</h2>
-                <P class="line-clamp-2 opacity-60">The navigation menu doesn't collapse properly on mobile devices...</P>
-              </div>
-                <div class="card-actions flex">
-                  <div class="badge badge-outline bg-red-100 text-red-400 px-4  rounded-2xl"><i class="fa-solid fa-bug"></i>Bug</div>
-                  <div class="badge badge-outline bg-yellow-100 text-yellow-400 px-4  rounded-2xl"><i class="fa-solid fa-life-ring"></i>Help Wanted</div>
-                </div>
-              </div>
-              <hr class="border-t border-base-300 mt-2">
-              <div class="card-footer flex justify-between items-center px-4 py-2">
-                <div class="flex flex-col gap-2 opacity-60">
-                  <p class="text-sm">#1 by john_doe</p>
-                  <p><time datetime="2023-10-01T12:00:00Z">1/15/2024</time></p>
-                </div>
-              </div>
-            </div>
-            <div class="card bg-base-100  shadow-sm  py-2 border-t-4 border-purple-500 ">
-              <figure class="justify-between px-4 py-2">
-                <div class=""><img src="assets/Closed- Status .png" alt=""></div>
-                <div class="bg-purple-100 text-purple-400 px-4  rounded-2xl">Low</div>
-              </figure>
-              <div class="card-body py-2 px-4">
-               <div class="">
-                <h2 class="text-[18px] font-semibold">Fix navigation menu on mobile devices</h2>
-                <P class="line-clamp-2 opacity-60">The navigation menu doesn't collapse properly on mobile devices...</P>
-              </div>
-                <div class="card-actions flex">
-                  <div class="badge badge-outline bg-red-100 text-red-400 px-4  rounded-2xl"><i class="fa-solid fa-bug"></i>Bug</div>
-                  <div class="badge badge-outline bg-yellow-100 text-yellow-400 px-4  rounded-2xl"><i class="fa-solid fa-life-ring"></i>Help Wanted</div>
-                </div>
-              </div>
-              <hr class="border-t border-base-300 mt-2">
-              <div class="card-footer flex justify-between items-center px-4 py-2">
-                <div class="flex flex-col gap-2 opacity-60">
-                  <p class="text-sm">#1 by john_doe</p>
-                  <p><time datetime="2023-10-01T12:00:00Z">1/15/2024</time></p>
-                </div>
-              </div>
-            </div>
-            <div class="card bg-base-100  shadow-sm  py-2 border-t-4 border-green-500 ">
-              <figure class="justify-between px-4 py-2">
-                <div class=""><img src="assets/Open-Status.png" alt=""></div>
-                <div class="bg-yellow-100 text-yellow-400 px-4  rounded-2xl">Medium</div>
-              </figure>
-              <div class="card-body py-2 px-4">
-               <div class="">
-                <h2 class="text-[18px] font-semibold">Fix navigation menu on mobile devices</h2>
-                <P class="line-clamp-2 opacity-60">The navigation menu doesn't collapse properly on mobile devices...</P>
-              </div>
-                <div class="card-actions flex">
-                  <div class="badge badge-outline bg-red-100 text-red-400 px-4  rounded-2xl"><i class="fa-solid fa-bug"></i>Bug</div>
-                  <div class="badge badge-outline bg-yellow-100 text-yellow-400 px-4  rounded-2xl"><i class="fa-solid fa-life-ring"></i>Help Wanted</div>
-                </div>
-              </div>
-              <hr class="border-t border-base-300 mt-2">
-              <div class="card-footer flex justify-between items-center px-4 py-2">
-                <div class="flex flex-col gap-2 opacity-60">
-                  <p class="text-sm">#1 by john_doe</p>
-                  <p><time datetime="2023-10-01T12:00:00Z">1/15/2024</time></p>
-                </div>
-              </div>
-            </div>
-            <div class="card bg-base-100  shadow-sm  py-2 border-t-4 border-green-500 ">
-              <figure class="justify-between px-4 py-2">
-                <div class=""><img src="assets/Open-Status.png" alt=""></div>
-                <div class="bg-yellow-100 text-yellow-400 px-4  rounded-2xl">Medium</div>
-              </figure>
-              <div class="card-body py-2 px-4">
-               <div class="">
-                <h2 class="text-[18px] font-semibold">Fix navigation menu on mobile devices</h2>
-                <P class="line-clamp-2 opacity-60">The navigation menu doesn't collapse properly on mobile devices...</P>
-              </div>
-                <div class="card-actions flex">
-                  <div class="badge badge-outline bg-red-100 text-red-400 px-4  rounded-2xl"><i class="fa-solid fa-bug"></i>Bug</div>
-                  <div class="badge badge-outline bg-yellow-100 text-yellow-400 px-4  rounded-2xl"><i class="fa-solid fa-life-ring"></i>Help Wanted</div>
-                </div>
-              </div>
-              <hr class="border-t border-base-300 mt-2">
-              <div class="card-footer flex justify-between items-center px-4 py-2">
-                <div class="flex flex-col gap-2 opacity-60">
-                  <p class="text-sm">#1 by john_doe</p>
-                  <p><time datetime="2023-10-01T12:00:00Z">1/15/2024</time></p>
-                </div>
-              </div>
-            </div>
-            <div class="card bg-base-100  shadow-sm  py-2 border-t-4 border-purple-500 ">
-              <figure class="justify-between px-4 py-2">
-                <div class=""><img src="assets/Closed- Status .png" alt=""></div>
-                <div class="bg-purple-100 text-purple-400 px-4  rounded-2xl">Low</div>
-              </figure>
-              <div class="card-body py-2 px-4">
-               <div class="">
-                <h2 class="text-[18px] font-semibold">Fix navigation menu on mobile devices</h2>
-                <P class="line-clamp-2 opacity-60">The navigation menu doesn't collapse properly on mobile devices...</P>
-              </div>
-                <div class="card-actions flex">
-                  <div class="badge badge-outline bg-red-100 text-red-400 px-4  rounded-2xl"><i class="fa-solid fa-bug"></i>Bug</div>
-                  <div class="badge badge-outline bg-yellow-100 text-yellow-400 px-4  rounded-2xl"><i class="fa-solid fa-life-ring"></i>Help Wanted</div>
-                </div>
-              </div>
-              <hr class="border-t border-base-300 mt-2">
-              <div class="card-footer flex justify-between items-center px-4 py-2">
-                <div class="flex flex-col gap-2 opacity-60">
-                  <p class="text-sm">#1 by john_doe</p>
-                  <p><time datetime="2023-10-01T12:00:00Z">1/15/2024</time></p>
-                </div>
-              </div>
-            </div>
-            <div class="card bg-base-100  shadow-sm  py-2 border-t-4 border-purple-500 ">
-              <figure class="justify-between px-4 py-2">
-                <div class=""><img src="assets/Closed- Status .png" alt=""></div>
-                <div class="bg-purple-100 text-purple-400 px-4  rounded-2xl">Low</div>
-              </figure>
-              <div class="card-body py-2 px-4">
-               <div class="">
-                <h2 class="text-[18px] font-semibold">Fix navigation menu on mobile devices</h2>
-                <P class="line-clamp-2 opacity-60">The navigation menu doesn't collapse properly on mobile devices...</P>
-              </div>
-                <div class="card-actions flex">
-                  <div class="badge badge-outline bg-red-100 text-red-400 px-4  rounded-2xl"><i class="fa-solid fa-bug"></i>Bug</div>
-                  <div class="badge badge-outline bg-yellow-100 text-yellow-400 px-4  rounded-2xl"><i class="fa-solid fa-life-ring"></i>Help Wanted</div>
-                </div>
-              </div>
-              <hr class="border-t border-base-300 mt-2">
-              <div class="card-footer flex justify-between items-center px-4 py-2">
-                <div class="flex flex-col gap-2 opacity-60">
-                  <p class="text-sm">#1 by john_doe</p>
-                  <p><time datetime="2023-10-01T12:00:00Z">1/15/2024</time></p>
-                </div>
-              </div>
-            </div>
-            
-    </div>
+    <!-- loading spinner -->
+      <div id="loadingSpinner" class="h-[60vh] flex hidden justify-center items-center">
+          <span class="loading loading-dots loading-xl"></span>
+      </div>
 
+    <div id="cardsContainer" class="bg-base-100 p-4 mt-4 rounded-box shadow-sm grid gap-4 md:grid-cols-4">
+        <!-- Issue cards will be dynamically inserted here -->
+    </div>
 
 </main>
 
+
+
+<script src="script/home.js"></script>
 </body>
 </html>
