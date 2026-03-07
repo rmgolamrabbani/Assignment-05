@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- tailwindcss and daisyui cdn  -->
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <!-- google font link  -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&display=swap" rel="stylesheet">
+    <!-- web app title  -->
+    <title>GitHub Issues Tracker | login</title>
+    <!-- added font family to body  -->
+    <style>
+        body {
+            font-family: 'Geist', sans-serif;
+        }
+    </style>
+
+   </head>
+</head>
+<body class=" bg-base-200 ">
+    
+<header>
+        <div class="navbar bg-base-100 shadow-sm px-4 sticky top-5 z-10">
+            <div class="flex-1">
+              <h2 class="text-xl flex items-center gap-2 font-bold"> <img class="w-[32px]" src="assets/github-logo.png" alt="">GitHub Issues Tracker</h2>
+            </div>
+            <div class="flex gap-2">
+                 <input type="text" placeholder="Search" class="input input-bordered w-24 md:w-auto" />
+                 <div class="dropdown dropdown-end">
+                    <button class="btn btn-primary">New Issue</button>
+                 </div>
+            </div>
+        </div>
+</header>
+
+<main class="min-h-screen max-w-4xl  mx-auto ">
+
+    <div class=" bg-base-100 p-4 mt-4 rounded-box shadow-sm">
+        <button class="btn  btn-primary">All</button>
+        <button class="btn  btn-primary">Open</button>
+        <button class="btn  btn-primary">Closed</button>
+    </div>
+
+    <div class="bg-base-100 p-4 mt-4 rounded-box shadow-sm justify-between flex ">
+        <div class="flex items-center gap-2">
+            <div class="bg-base-300 p-2 rounded-full"><img src="assets/Aperture.png" alt=""></div>
+            <div class="">
+                <h3 class="font-semibold">50 Issues</h3>
+                <p class="text-sm text-base-content/50">Track and manage your project issues</p>
+            </div>
+        </div>
+        <div class="flex mt-5 gap-4  ">
+          <p class="flex items-center gap-2"> <img src="assets/Open-Status.png" alt="">Open</p>
+          <p class="flex items-center gap-2"> <img src="assets/Closed- Status .png" alt="">Closed</p>  
+        </div>
+    </div>
+
+    <div class=" card-container bg-base-100 p-4 mt-4 rounded-box shadow-sm grid gap-4 md:grid-cols-4">
+            <div class="card bg-base-100  shadow-sm">
+  <figure>
+    <img
+      src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp"
+      alt="Shoes" />
+  </figure>
+  <div class="card-body">
+    <h2 class="card-title">
+      Card Title
+      <div class="badge badge-secondary">NEW</div>
+    </h2>
+    <p>A card component has a figure, a body part, and inside body there are title and actions parts</p>
+    <div class="card-actions justify-end">
+      <div class="badge badge-outline">Fashion</div>
+      <div class="badge badge-outline">Products</div>
+    </div>
+  </div>
+            </div>
+            <div class="card bg-base-100  shadow-sm">
+  <figure>
+    <img
+      src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp"
+      alt="Shoes" />
+  </figure>
+  <div class="card-body">
+    <h2 class="card-title">
+      Card Title
+      <div class="badge badge-secondary">NEW</div>
+    </h2>
+    <p>A card component has a figure, a body part, and inside body there are title and actions parts</p>
+    <div class="card-actions justify-end">
+      <div class="badge badge-outline">Fashion</div>
+      <div class="badge badge-outline">Products</div>
+    </div>
+  </div>
+            </div>
+            <div class="card bg-base-100  shadow-sm">
+  <figure>
+    <img
+      src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp"
+      alt="Shoes" />
+  </figure>
+  <div class="card-body">
+    <h2 class="card-title">
+      Card Title
+      <div class="badge badge-secondary">NEW</div>
+    </h2>
+    <p>A card component has a figure, a body part, and inside body there are title and actions parts</p>
+    <div class="card-actions justify-end">
+      <div class="badge badge-outline">Fashion</div>
+      <div class="badge badge-outline">Products</div>
+    </div>
+  </div>
+            </div>
+            <div class="card bg-base-100  shadow-sm">
+  <figure>
+    <img
+      src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp"
+      alt="Shoes" />
+  </figure>
+  <div class="card-body">
+    <h2 class="card-title">
+      Card Title
+      <div class="badge badge-secondary">NEW</div>
+    </h2>
+    <p>A card component has a figure, a body part, and inside body there are title and actions parts</p>
+    <div class="card-actions justify-end">
+      <div class="badge badge-outline">Fashion</div>
+      <div class="badge badge-outline">Products</div>
+    </div>
+  </div>
+            </div>
+            <div class="card bg-base-100  shadow-sm">
+  <figure>
+    <img
+      src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp"
+      alt="Shoes" />
+  </figure>
+  <div class="card-body">
+    <h2 class="card-title">
+      Card Title
+      <div class="badge badge-secondary">NEW</div>
+    </h2>
+    <p>A card component has a figure, a body part, and inside body there are title and actions parts</p>
+    <div class="card-actions justify-end">
+      <div class="badge badge-outline">Fashion</div>
+      <div class="badge badge-outline">Products</div>
+    </div>
+  </div>
+            </div>
+    </div>
+
+
+</main>
+
+</body>
+</html>
