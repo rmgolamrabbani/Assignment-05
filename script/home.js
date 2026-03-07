@@ -6,73 +6,80 @@ const closedBtn = document.getElementById("closedBtn");
 const allSection = document.getElementById("allSection");
 const openSection = document.getElementById("openSection");
 const closedSection = document.getElementById("closedSection");
-
+const issueCount = document.getElementById("issueCount");
+const issueModal = document.getElementById("issueModal");
+const modalTitle = document.getElementById("modalTitle");
+const modalDescription = document.getElementById("modalDescription");
+const modal = document.getElementById("my_modal_1");
+const modalStatus = document.getElementById("modalStatus");
+const modalPriority = document.getElementById("modalPriority");
+const modalAuthor = document.getElementById("modalAuthor");
+const modalDate = document.getElementById("modalDate");
+const modalLabels = document.getElementById("modalLabels");
+const searchInput = document.getElementById("searchInput");
+const buttons = document.querySelectorAll(".toggle-btn");
 let allIssues = [];
 
 
 function showLoading() {
-  loadingSpinner.classList.remove("hidden");
-  cardsContainer.innerHTML = "";
+    loadingSpinner.classList.remove("hidden");
+    cardsContainer.innerHTML = "";
 }
 
 function hideLoading() {
-  loadingSpinner.classList.add("hidden");
+    loadingSpinner.classList.add("hidden");
 }
 
 
 
-const buttons = document.querySelectorAll(".toggle-btn");
+
 
 buttons.forEach(button => {
 
-  button.addEventListener("click", () => {
+    button.addEventListener("click", () => {
 
-    buttons.forEach(btn => {
-      btn.classList.remove("bg-blue-700","text-white");
-      btn.classList.add("bg-white");
+        buttons.forEach(btn => {
+            btn.classList.remove("bg-blue-700", "text-white");
+            btn.classList.add("bg-white");
+        });
+
+        button.classList.add("bg-blue-700", "text-white");
+        button.classList.remove("bg-white");
+
+        const type = button.dataset.type;
+
+        if (type === "all") {
+            displayIssues(allIssues);
+        } else if (type === "open") {
+            const openIssues = allIssues.filter(issue => issue.status === "open");
+            displayIssues(openIssues);
+        } else if (type === "closed") {
+            const closedIssues = allIssues.filter(issue => issue.status === "closed");
+            displayIssues(closedIssues);
+        }
+
     });
-
-    button.classList.add("bg-blue-700","text-white");
-    button.classList.remove("bg-white");
-
-    const type = button.dataset.type;
-
-    if (type === "all") {
-      displayIssues(allIssues);
-    }
-
-    else if (type === "open") {
-      const openIssues = allIssues.filter(issue => issue.status === "open");
-      displayIssues(openIssues);
-    }
-
-    else if (type === "closed") {
-      const closedIssues = allIssues.filter(issue => issue.status === "closed");
-      displayIssues(closedIssues);
-    }
-
-  });
 
 });
 
 
 
 
- async function loadIssues() {
+async function loadIssues() {
 
-  showLoading();
+    showLoading();
 
-  const res = await fetch("https://phi-lab-server.vercel.app/api/v1/lab/issues");
-  const data = await res.json();
- 
-//   displayIssues(data.data);
+    const res = await fetch("https://phi-lab-server.vercel.app/api/v1/lab/issues");
+    const data = await res.json();
 
-  allIssues = data.data;
-  displayIssues(allIssues);
-  
-  hideLoading();
+    //   displayIssues(data.data);
 
- }
+    allIssues = data.data;
+    displayIssues(allIssues);
+
+    hideLoading();
+
+}
 
 loadIssues();
 
@@ -80,34 +87,36 @@ function displayIssues(issues) {
 
     cardsContainer.innerHTML = "";
 
+    issueCount.textContent = issues.length + " Issues";
+
     issues.forEach(issue => {
 
         const card = document.createElement("div");
 
         card.classList.add(
-          "card",
-          "bg-base-100",
-          "shadow-sm",
-          "py-2",
-          "border-t-4"
+            "card",
+            "bg-base-100",
+            "shadow-sm",
+            "py-2",
+            "border-t-4"
         );
 
         // conditionally add border color
 
-        card.classList.add(issue.status === "open"
-          ? "border-green-500"
-          : "border-purple-500");
+        card.classList.add(issue.status === "open" ?
+            "border-green-500" :
+            "border-purple-500");
 
         let priorityClass = "";
 
         if (issue.priority === "high") {
-        priorityClass = "bg-red-100 text-red-400";
+            priorityClass = "bg-red-100 text-red-400";
         } else if (issue.priority === "medium") {
-        priorityClass = "bg-yellow-100 text-yellow-400";
+            priorityClass = "bg-yellow-100 text-yellow-400";
         } else {
-        priorityClass = "bg-green-100 text-green-400";
+            priorityClass = "bg-green-100 text-green-400";
         }
-        
+
 
         card.innerHTML = `
          <figure class="justify-between px-4 py-2">
@@ -143,6 +152,10 @@ function displayIssues(issues) {
               </div>
         `;
 
+        card.addEventListener("click", () => {
+            loadIssueDetails(issue._id);
+        });
+
         cardsContainer.appendChild(card);
 
     });
@@ -151,11 +164,77 @@ function displayIssues(issues) {
 
 
 
+async function loadIssueDetails(id) {
+
+    const res = await fetch(`https://phi-lab-server.vercel.app/api/v1/lab/issue/${id}`);
+
+    const data = await res.json();
+
+    const issue = data.data;
+
+    showIssueModal(issue);
+
+}
 
 
 
+function showIssueModal(issue) {
 
+    document.getElementById("modalTitle").textContent = issue.title;
 
+    document.getElementById("modalDescription").textContent =
+        issue.description;
 
+    document.getElementById("modalStatus").textContent =
+        "Status: " + issue.status;
 
+    document.getElementById("modalPriority").textContent =
+        "Priority: " + issue.priority;
 
+    document.getElementById("modalAuthor").textContent =
+        "Author: " + issue.author;
+
+    document.getElementById("modalDate").textContent =
+        "Created: " + new Date(issue.createdAt).toLocaleDateString();
+
+    const labelsContainer = document.getElementById("modalLabels");
+
+    labelsContainer.innerHTML = "";
+
+    issue.labels.forEach(label => {
+
+        const span = document.createElement("span");
+
+        span.className = "badge badge-outline";
+
+        span.textContent = label;
+
+        labelsContainer.appendChild(span);
+
+    });
+
+    modal.showModal();
+
+}
+
+searchInput.addEventListener("input", async () => {
+    const searchText = searchInput.value.trim(); // .trim() বাড়তি স্পেস সরিয়ে ফেলে
+
+    // যদি সার্চ বক্স খালি থাকে, তবে আগের লোড হওয়া সব ইস্যু (allIssues) দেখাবে
+    if (searchText === "") {
+        displayIssues(allIssues);
+        return;
+    }
+
+    // সার্চ বক্স খালি না থাকলে API কল করবে
+    try {
+        const res = await fetch(`https://phi-lab-server.vercel.app/api/v1/lab/issues/search?q=${searchText}`);
+        const data = await res.json();
+        
+        if (data.data) {
+            displayIssues(data.data);
+        }
+    } catch (error) {
+        console.error("Search failed:", error);
+    }
+});

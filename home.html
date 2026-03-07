@@ -33,7 +33,7 @@
               <h2 class="text-xl flex items-center gap-2 font-bold"> <img class="w-[32px]" src="assets/github-logo.png" alt="">GitHub Issues Tracker</h2>
             </div>
             <div class="flex gap-2">
-                 <input type="text" placeholder="Search" class="input input-bordered w-24 md:w-auto" />
+                 <input type="text" placeholder="Search" class="input input-bordered w-24 md:w-auto" id="searchInput" />
                  <div class="dropdown dropdown-end">
                     <button class="btn btn-primary"><i class="fa-solid fa-plus"></i> New Issue</button>
                  </div>
@@ -64,7 +64,7 @@
         <div class="flex items-center gap-2">
             <div class="bg-base-300 p-2 rounded-full"><img src="assets/Aperture.png" alt=""></div>
             <div class="">
-                <h3 class="font-semibold">50 Issues</h3>
+                <h3 id="issueCount" class="font-semibold pr-2">50 <span >Issues</span></h3>
                 <p class="text-sm text-base-content/50">Track and manage your project issues</p>
             </div>
         </div>
@@ -83,9 +83,34 @@
         <!-- Issue cards will be dynamically inserted here -->
     </div>
 
-    <section id="allSection"></section>
-    <section id="openSection"></section>
-    <section id="closedSection"></section>
+
+  <!-- Open the modal using ID.showModal() method -->
+<dialog id="issueModal" class="modal">
+  <div class="modal-box">
+    <h3 id="modalTitle" class="text-lg font-bold"></h3> 
+    
+    <div class="py-4 space-y-3">
+        <p id="modalDescription" class="text-gray-600"></p>
+        
+        <div id="modalLabels" class="flex flex-wrap gap-2"></div>
+
+        <div class="text-sm bg-base-200 p-3 rounded-lg">
+            <p id="modalStatus" class="font-medium"></p>
+            <p id="modalPriority"></p>
+            <p id="modalAuthor"></p>
+            <p id="modalDate" class="italic opacity-70"></p>
+        </div>
+    </div>
+
+    <div class="modal-action">
+      <form method="dialog">
+        <button class="btn">Close</button>
+      </form>
+    </div>
+  </div>
+</dialog>
+
+
 
 </main>
 
