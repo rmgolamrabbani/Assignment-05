@@ -7,15 +7,6 @@ const allSection = document.getElementById("allSection");
 const openSection = document.getElementById("openSection");
 const closedSection = document.getElementById("closedSection");
 const issueCount = document.getElementById("issueCount");
-const issueModal = document.getElementById("issueModal");
-const modalTitle = document.getElementById("modalTitle");
-const modalDescription = document.getElementById("modalDescription");
-const modal = document.getElementById("my_modal_1");
-const modalStatus = document.getElementById("modalStatus");
-const modalPriority = document.getElementById("modalPriority");
-const modalAuthor = document.getElementById("modalAuthor");
-const modalDate = document.getElementById("modalDate");
-const modalLabels = document.getElementById("modalLabels");
 const searchInput = document.getElementById("searchInput");
 const buttons = document.querySelectorAll(".toggle-btn");
 let allIssues = [];
@@ -38,6 +29,8 @@ buttons.forEach(button => {
 
     button.addEventListener("click", () => {
 
+        showLoading();
+
         buttons.forEach(btn => {
             btn.classList.remove("bg-blue-700", "text-white");
             btn.classList.add("bg-white");
@@ -58,6 +51,7 @@ buttons.forEach(button => {
             displayIssues(closedIssues);
         }
 
+        hideLoading();
     });
 
 });
@@ -120,7 +114,7 @@ function displayIssues(issues) {
 
         card.innerHTML = `
          <figure class="justify-between px-4 py-2">
-                <div>${issue.status === "open" ? "Open" : "Closed"}</div>
+                <div>${issue.status === "open" ? "<img src='assets/Open-Status.png' alt='Open'>" : "<img src='assets/Closed- Status .png' alt='Closed'> "}</div>
                 <div class=" ${priorityClass} px-4 rounded-2xl">${issue.priority}</div>
               </figure>
 
@@ -153,8 +147,8 @@ function displayIssues(issues) {
         `;
 
         card.addEventListener("click", () => {
-            loadIssueDetails(issue._id);
-        });
+  openModal(issue);
+});
 
         cardsContainer.appendChild(card);
 
@@ -213,7 +207,7 @@ function showIssueModal(issue) {
 
     });
 
-    modal.showModal();
+        modal.showModal();
 
 }
 
@@ -238,3 +232,33 @@ searchInput.addEventListener("input", async () => {
         console.error("Search failed:", error);
     }
 });
+
+
+
+
+const issueModal = document.getElementById("issueModal");
+
+const modalTitle = document.getElementById("modalTitle");
+const modalDescription = document.getElementById("modalDescription");
+const modalAuthor = document.getElementById("modalAuthor");
+const modalDate = document.getElementById("modalDate");
+
+
+function openModal(issue){
+
+  modalTitle.textContent = issue.title;
+
+  modalDescription.textContent = issue.description;
+
+  modalAuthor.textContent = "Author: " + issue.author;
+
+  modalDate.textContent = "Created: " + issue.createdAt;
+
+  issueModal.showModal();
+
+}
+
+
+
+
+
