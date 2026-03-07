@@ -1,5 +1,5 @@
 
-console.log('login page is working');
+
 
 document.getElementById('loginBtn').addEventListener('click', function (event) {
     event.preventDefault(); // Prevent form submission
@@ -13,7 +13,7 @@ document.getElementById('loginBtn').addEventListener('click', function (event) {
     if (username === 'admin' && password === 'admin123') {
         alert('Login successful!');
 
-        window.location.assign("/home.html");
+        window.location.assign("home.html");
        
     } else {
         alert('Invalid username or password. Please try again.');

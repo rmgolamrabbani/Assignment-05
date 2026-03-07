@@ -3,6 +3,10 @@ const loadingSpinner = document.getElementById("loadingSpinner");
 const allBtn = document.getElementById("allBtn");
 const openBtn = document.getElementById("openBtn");
 const closedBtn = document.getElementById("closedBtn");
+const allSection = document.getElementById("allSection");
+const openSection = document.getElementById("openSection");
+const closedSection = document.getElementById("closedSection");
+
 let allIssues = [];
 
 
@@ -14,19 +18,6 @@ function showLoading() {
 function hideLoading() {
   loadingSpinner.classList.add("hidden");
 }
-
-// allBtn.addEventListener("click", () => {
-//   // Update active button style
-//   const allButtons = document.querySelectorAll(
-//     "#btnContent button",
-//   );
-//   //   console.log(allButtons);
-//   allButtons.forEach((btn) => {
-//     btn.classList.remove("btn-primary");
-//     btn.classList.add("btn-outline");
-//   });
-
-// });
 
 
 
@@ -44,6 +35,22 @@ buttons.forEach(button => {
     button.classList.add("bg-blue-700","text-white");
     button.classList.remove("bg-white");
 
+    const type = button.dataset.type;
+
+    if (type === "all") {
+      displayIssues(allIssues);
+    }
+
+    else if (type === "open") {
+      const openIssues = allIssues.filter(issue => issue.status === "open");
+      displayIssues(openIssues);
+    }
+
+    else if (type === "closed") {
+      const closedIssues = allIssues.filter(issue => issue.status === "closed");
+      displayIssues(closedIssues);
+    }
+
   });
 
 });
@@ -51,17 +58,21 @@ buttons.forEach(button => {
 
 
 
-async function loadIssues() {
+ async function loadIssues() {
 
   showLoading();
 
   const res = await fetch("https://phi-lab-server.vercel.app/api/v1/lab/issues");
   const data = await res.json();
+ 
+//   displayIssues(data.data);
 
+  allIssues = data.data;
+  displayIssues(allIssues);
+  
   hideLoading();
 
-  displayIssues(data.data);
-}
+ }
 
 loadIssues();
 
@@ -137,7 +148,6 @@ function displayIssues(issues) {
     });
 
 }
-
 
 
 

@@ -41,27 +41,24 @@
         </div>
 </header>
 
-<main class="min-h-screen max-w-7xl  mx-auto ">
+<main id="mainContent" class="min-h-screen max-w-7xl  mx-auto ">
 
     <div id="btnContent" class=" bg-base-100 p-4 mt-4 rounded-box shadow-sm">
 
-    <button class="toggle-btn bg-blue-700 text-white px-4 py-2 rounded" data-type="all">
+    <button id="allBtn" class="toggle-btn bg-blue-700 text-white px-4 py-2 rounded" data-type="all">
       All
     </button>
 
-    <button class="toggle-btn bg-white border px-4 py-2 rounded" data-type="open">
+    <button id="openBtn" class="toggle-btn bg-white border px-4 py-2 rounded" data-type="open">
       Open
     </button>
 
-    <button class="toggle-btn bg-white border px-4 py-2 rounded" data-type="closed">
+    <button id="closedBtn" class="toggle-btn bg-white border px-4 py-2 rounded" data-type="closed">
       Closed
     </button>
 
-      
-        <!-- <button id="allBtn" class="btn  btn-primary">All</button>
-        <button id="openBtn" class="btn  btn-outline">Open</button>
-        <button id="closedBtn" class="btn  btn-outline">Closed</button> -->
     </div>
+
 
     <div class="bg-base-100 p-4 mt-4 rounded-box shadow-sm justify-between flex ">
         <div class="flex items-center gap-2">
@@ -85,6 +82,10 @@
     <div id="cardsContainer" class="bg-base-100 p-4 mt-4 rounded-box shadow-sm grid gap-4 md:grid-cols-4">
         <!-- Issue cards will be dynamically inserted here -->
     </div>
+
+    <section id="allSection"></section>
+    <section id="openSection"></section>
+    <section id="closedSection"></section>
 
 </main>
 
