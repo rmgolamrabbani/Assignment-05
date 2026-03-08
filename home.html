@@ -89,12 +89,28 @@
   <div class="modal-box">
 
     <h3 id="modalTitle" class="font-bold text-lg"></h3>
+    <div class="flex my-2 gap-4">
+      <div class="bg-green-500 px-3  rounded-3xl"><p id="modalStatus" class=""></p></div>
+      
+      <p id="modalAuthor" class="text-sm text-gray-400"></p>
+      <p id="modalDate" class="text-sm text-gray-400"></p>
+    </div>
 
-    <p id="modalDescription" class="py-4"></p>
+    <div class="bg-yellow-200 px-3 my-4 rounded-3xl w-max">
+      <p id="modalLabels" class=""></p>
+    </div>
 
-    <p id="modalAuthor"></p>
+   
+    <p id="modalDescription" class="text-gray-500"></p>
 
-    <p id="modalDate"></p>
+    <div class="flex justify-between items-center mt-4">
+      <p id="assignee"></p>
+      <p id="modalPriority" class="py-2"></p>
+    </div>
+    
+    
+
+    
 
     <div class="modal-action">
       <form method="dialog">

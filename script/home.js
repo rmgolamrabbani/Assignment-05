@@ -239,21 +239,27 @@ searchInput.addEventListener("input", async () => {
 const issueModal = document.getElementById("issueModal");
 
 const modalTitle = document.getElementById("modalTitle");
+const modalStatus = document.getElementById("modalStatus");
+const modalPriority = document.getElementById("modalPriority");
+const modalLabels = document.getElementById("modalLabels");
 const modalDescription = document.getElementById("modalDescription");
 const modalAuthor = document.getElementById("modalAuthor");
 const modalDate = document.getElementById("modalDate");
+const assignee = document.getElementById("assignee");
 
 
 function openModal(issue){
 
   modalTitle.textContent = issue.title;
-
+  modalStatus.textContent = "" + issue.status;
+  modalPriority.textContent = "Priority: " + issue.priority;
+  modalLabels.textContent = "" + issue.labels.join(" , ");
   modalDescription.textContent = issue.description;
 
-  modalAuthor.textContent = "Author: " + issue.author;
+  modalAuthor.textContent = ".Opened by " + issue.author;
 
-  modalDate.textContent = "Created: " + issue.createdAt;
-
+  modalDate.textContent = "." + issue.createdAt;
+  assignee.textContent = "Assignee: " + issue.assignee;
   issueModal.showModal();
 
 }
