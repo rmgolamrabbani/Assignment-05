@@ -1,12 +1,10 @@
 
-
-
 document.getElementById('loginBtn').addEventListener('click', function (event) {
-    event.preventDefault(); // Prevent form submission
+    event.preventDefault();
     const username = document.querySelector('input[placeholder="Enter your username"]').value;
     const password = document.querySelector('input[placeholder="Enter your password"]').value;
 
-    // Add your login logic here
+        
     console.log('Username:', username);
     console.log('Password:', password);
 

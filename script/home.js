@@ -9,6 +9,16 @@ const closedSection = document.getElementById("closedSection");
 const issueCount = document.getElementById("issueCount");
 const searchInput = document.getElementById("searchInput");
 const buttons = document.querySelectorAll(".toggle-btn");
+const issueModal = document.getElementById("issueModal");
+const modalTitle = document.getElementById("modalTitle");
+const modalStatus = document.getElementById("modalStatus");
+const modalPriority = document.getElementById("modalPriority");
+const modalLabels = document.getElementById("modalLabels");
+const modalDescription = document.getElementById("modalDescription");
+const modalAuthor = document.getElementById("modalAuthor");
+const modalDate = document.getElementById("modalDate");
+const assignee = document.getElementById("assignee");
+
 let allIssues = [];
 
 
@@ -235,31 +245,33 @@ searchInput.addEventListener("input", async () => {
 
 
 
-
-const issueModal = document.getElementById("issueModal");
-
-const modalTitle = document.getElementById("modalTitle");
-const modalStatus = document.getElementById("modalStatus");
-const modalPriority = document.getElementById("modalPriority");
-const modalLabels = document.getElementById("modalLabels");
-const modalDescription = document.getElementById("modalDescription");
-const modalAuthor = document.getElementById("modalAuthor");
-const modalDate = document.getElementById("modalDate");
-const assignee = document.getElementById("assignee");
-
-
 function openModal(issue){
 
   modalTitle.textContent = issue.title;
   modalStatus.textContent = "" + issue.status;
   modalPriority.textContent = "Priority: " + issue.priority;
-  modalLabels.textContent = "" + issue.labels.join(" , ");
+  modalLabels.textContent = " " + issue.labels.join(" , ");
   modalDescription.textContent = issue.description;
-
   modalAuthor.textContent = ".Opened by " + issue.author;
-
   modalDate.textContent = "." + issue.createdAt;
   assignee.textContent = "Assignee: " + issue.assignee;
+ 
+  if (issue.priority === "high") {
+    modalPriority.className = "bg-red-500 text-white px-3 py-1 rounded-3xl";
+  } else if (issue.priority === "medium") {
+    modalPriority.className = "bg-yellow-500 text-white px-3 py-1 rounded-3xl";
+  } else {
+    modalPriority.className = "bg-green-500 text-white px-3 py-1 rounded-3xl";
+  }
+
+  if (issue.status === "open") {
+    modalStatus.className = "bg-green-500 text-white px-3  rounded-3xl";
+  } else {
+    modalStatus.className = "bg-purple-500 text-white px-3  rounded-3xl";
+  }
+
+
+
   issueModal.showModal();
 
 }
