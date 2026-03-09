@@ -8,7 +8,6 @@
 
 
 
-
 1-
 The difference between var, let, and const-
 
@@ -85,9 +84,6 @@ const greet = name => "Hello " + name;
 5-
 
 Template Literals are JavaScript strings written with backticks (``) that allow variable interpolation (${}), expressions, and multi-line strings.This feature is used to create strings more easily and dynamically.
-
-
-
 
 
 
